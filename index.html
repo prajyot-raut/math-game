@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Game</title>
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="images/logo512.png">
+    <link rel="stylesheet" href="public/style.css" />
+    <script defer src="public/index.js"></script>
+    <script defer src="public/script.js"></script>
+  </head>
+
+  <body>
+    <audio loop id="backgroundMusic" src="Music/Background_Music.mp3" autoplay></audio>
+    <audio id="correctMusic" src="Music/Correct.ogg"></audio>
+    <div id="startScreen">
+      <img class="gameLogo" src="images/logo_transparent.png" alt="logo" />
+      <button class="startBtn">
+        <svg
+          width="100"
+          height="100"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          color="#FFF"
+        >
+          <path
+            d="M9.5 15.584V8.416a.5.5 0 01.77-.42l5.576 3.583a.5.5 0 010 .842l-5.576 3.584a.5.5 0 01-.77-.42z"
+          ></path>
+          <path
+            fill-rule="evenodd"
+            d="M12 2.5a9.5 9.5 0 100 19 9.5 9.5 0 000-19zM1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12z"
+          ></path>
+        </svg>
+      </button>
+      <button class="infoBtn">
+        <svg
+          width="70"
+          height="70"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          color="#FFF"
+        >
+          <path d="M0 0h24v24H0V0z" fill="none"></path>
+          <path
+            d="M11 7h2v2h-2V7zm0 4h2v6h-2v-6zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+          ></path>
+        </svg>
+      </button>
+      <button class="settingsBtn">
+        <svg
+          width="70"
+          height="70"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          color="#FFF"
+        >
+          <path d="M0 0h24v24H0V0z" fill="none"></path>
+          <path
+            d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.488.488 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"
+          ></path>
+        </svg>
+      </button>
+    </div>
+    <div id="endScreen">
+      <img class="gameLogo" src="images/logo_transparent.png" alt="logo" />
+
+      <h2>Thanks for playing.</h2>
+      <h3 id="scoreDisplay"></h3>
+      <button class="startBtn">
+        <svg
+          width="100"
+          height="100"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          color="#FFF"
+        >
+          <path d="M0 0h24v24H0z" fill="none"></path>
+          <path
+            d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"
+          ></path>
+        </svg>
+      </button>
+      <button class="infoBtn">
+        <svg
+          width="70"
+          height="70"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          color="#FFF"
+        >
+          <path d="M0 0h24v24H0V0z" fill="none"></path>
+          <path
+            d="M11 7h2v2h-2V7zm0 4h2v6h-2v-6zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+          ></path>
+        </svg>
+      </button>
+      <button class="settingsBtn">
+        <svg
+          width="70"
+          height="70"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          color="#FFF"
+        >
+          <path d="M0 0h24v24H0V0z" fill="none"></path>
+          <path
+            d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.488.488 0 00-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"
+          ></path>
+        </svg>
+      </button>
+    </div>
+    <div id="infoScreen">
+      <button class="backBtn">
+        <svg
+          width="40"
+          height="40"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          color="#FFF"
+        >
+          <path d="M0 0h24v24H0z" fill="none"></path>
+          <path
+            d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+          ></path>
+        </svg>
+      </button>
+      <h1>About</h1>
+      <p>
+        The aim of this game is improve your
+        <strong>Mathematics Calculation</strong>. This game is very useful for
+        students.
+      </p>
+
+      <fieldset>
+        <legend>Credits</legend>
+        <span>Developer : Prajyot Raut</span>
+        <span>Designer : Prajyot Raut</span>
+      </fieldset>
+
+      <h2>How to Play</h2>
+      <ul>
+        <li>After starting the game, random Math expression will appear.</li>
+        <li>
+          Just calculate that expression and enter it using the number Button
+          given in the game.
+        </li>
+        <li>Try to calculate as much as expression you can calculate.</li>
+        <li>
+          If the Math expression box touched the red line then your game will be
+          over.
+        </li>
+      </ul>
+
+      <h2>Want to improve</h2>
+      <h5>Please leave any suggestion here</h5>
+      <form id="reportForm" autocomplete="off" action="https://math-game-server.glitch.me/post" method="POST">
+        <input type="text" name="response[name]" placeholder="Name" required>
+        <textarea name="response[message]" rows="4" placeholder="Please enter your suggestion here."></textarea>
+        <button>submit</button>
+      </form>
+
+      <h3>Resources : Music</h3>
+      <ul>
+        <li>Slow Grind by Ron Gelinas Chillout Lounge | https://soundcloud.com/atmospheric-music-portal</li>
+        <li>Music promoted by https://www.chosic.com/</li>
+      </ul>
+    </div>
+
+    <div id="settingsScreen">
+      <button class="backBtn">
+        <svg
+          width="40"
+          height="40"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          color="#FFF"
+        >
+          <path d="M0 0h24v24H0z" fill="none"></path>
+          <path
+            d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+          ></path>
+        </svg>
+      </button>
+      <h2>Current Mode : <span id="modeDisplay">Normal</span></h2>
+      <div class="modeBtnContainer">
+        <button class="modeBtn">Easy</button>
+        <button class="modeBtn activeModeBtn">Normal</button>
+        <button class="modeBtn">Hard</button>
+        <button class="modeBtn">Impossible</button>
+      </div>
+      <h2>Music</h2>
+      <button id="musicDisplay">
+        <svg
+          width="40"
+          height="40"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 16 16"
+          fill="currentColor"
+          color="#FFF"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M7.563 2.069A.75.75 0 018 2.75v10.5a.75.75 0 01-1.238.57L3.472 11H1.75A1.75 1.75 0 010 9.25v-2.5C0 5.784.784 5 1.75 5h1.723l3.289-2.82a.75.75 0 01.801-.111zM6.5 4.38L4.238 6.319a.75.75 0 01-.488.181h-2a.25.25 0 00-.25.25v2.5c0 .138.112.25.25.25h2a.75.75 0 01.488.18L6.5 11.62V4.38zm6.096-2.038a.75.75 0 011.06 0 8 8 0 010 11.314.75.75 0 01-1.06-1.06 6.5 6.5 0 000-9.193.75.75 0 010-1.06v-.001zm-1.06 2.121a.75.75 0 10-1.061 1.061 3.5 3.5 0 010 4.95.75.75 0 101.06 1.06 5 5 0 000-7.07l.001-.001z"
+          ></path>
+        </svg>
+      </button>
+    </div>
+
+    <div id="numberDisplay"></div>
+    <div id="buttonContainerWrapper">
+      <div id="buttonContainer">
+        <div id="inputContainer">
+          <input type="number" id="inputDisplay" />
+          <button>
+            <svg
+              width="30"
+              height="30"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              color="#FFF"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414 6.414a2 2 0 001.414.586H19a2 2 0 002-2V7a2 2 0 00-2-2h-8.172a2 2 0 00-1.414.586L3 12z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div class="numberBtnContainer">
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+        </div>
+        <div class="numberBtnContainer">
+          <button>4</button>
+          <button>5</button>
+          <button>6</button>
+        </div>
+        <div class="numberBtnContainer">
+          <button>7</button>
+          <button>8</button>
+          <button>9</button>
+        </div>
+        <div class="numberBtnContainer">
+          <button>0</button>
+          <button id="enter">Enter</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
